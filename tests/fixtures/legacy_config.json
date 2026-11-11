@@ -1,0 +1,226 @@
+{
+  "core_engine": "metaloc",
+  "runs_dir": "runs",
+  "timeout_seconds": 86400,
+  "cpus": 2,
+  "memory_gb": 4,
+  "rules": {
+    "pts1_extended": true,
+    "pts2_window": 30
+  },
+  "metaloc": {
+    "fallback_local_commands": true,
+    "runtime_environment": ".runtime/core",
+    "env": {
+      "PIP_CONSTRAINT": "{root}/tools/core-constraints.txt",
+      "PIP_NO_BUILD_ISOLATION": "0",
+      "PIP_INDEX_URL": "https://pypi.tuna.tsinghua.edu.cn/simple",
+      "PYTHONPATH": "",
+      "MPLBACKEND": "Agg"
+    },
+    "provenance_paths": [
+      ".runtime/core",
+      ".runtime/model-cache",
+      "tools/core-constraints.txt"
+    ],
+    "watch_paths": [
+      "upstream/metaLoc/bin",
+      "upstream/metaLoc/envs"
+    ],
+    "version_command": [
+      "{root}/.runtime/core/bin/python",
+      "-c",
+      "import sys,importlib.metadata as m; print(sys.version); print(list((x,m.version(x)) for x in ('torch','numpy','signalp6','DeepLoc2','fair-esm','transformers','pytorch-lightning')))"
+    ],
+    "path": "upstream/metaLoc",
+    "commit": "c10d8035603134a0c9916dcbcebdcf51d0559e95",
+    "command": [
+      "{root}/.runtime/bin/nextflow",
+      "run",
+      "{metaloc}",
+      "--fasta",
+      "{input}",
+      "--organism",
+      "euk",
+      "--signalptar",
+      "{signalp_tar}",
+      "--deeploctar",
+      "{deeploc_tar}",
+      "--phobiustar",
+      "{phobius_tar}",
+      "--deeptmhmm",
+      "false",
+      "-c",
+      "{override}",
+      "-work-dir",
+      "{work}",
+      "-with-trace",
+      "{output}/trace.tsv",
+      "-resume"
+    ],
+    "assets": {
+      "signalp_tar": "tools/assets/signalp-6.0i.fast.tar.gz",
+      "deeploc_tar": "tools/assets/deeploc-2.1.All.tar.gz",
+      "phobius_tar": "tools/assets/phobius101_linux.tgz"
+    },
+    "use_micromamba": true
+  },
+  "tools": {
+    "deeptmhmm": {
+      "version": "1.0 Academic",
+      "min_length": 1,
+      "command": [
+        "{root}/.runtime/deeptmhmm/bin/python",
+        "{root}/scripts/deeptmhmm_local.py",
+        "--fasta",
+        "{input}",
+        "--output-dir",
+        "{output}/prediction"
+      ],
+      "env": {
+        "PYTHONPATH": "",
+        "MPLBACKEND": "Agg"
+      },
+      "version_command": [
+        "{root}/.runtime/deeptmhmm/bin/python",
+        "-c",
+        "import sys,torch,numpy,importlib.metadata as m; print(sys.version,torch.__version__,numpy.__version__,m.version('fair-esm'))"
+      ],
+      "provenance_paths": [
+        ".runtime/deeptmhmm-source",
+        ".runtime/deeptmhmm",
+        ".runtime/core"
+      ],
+      "output_glob": "prediction/predicted_topologies.3line"
+    },
+    "signalp": {
+      "analysis_nterm": 70,
+      "version": "6.0 fast",
+      "min_length": 10,
+      "command": [
+        "{root}/.runtime/core/bin/signalp6",
+        "--fastafile",
+        "{input}",
+        "--organism",
+        "eukarya",
+        "--output_dir",
+        "{output}",
+        "--format",
+        "txt",
+        "--mode",
+        "fast"
+      ],
+      "version_command": [
+        "{root}/.runtime/core/bin/signalp6",
+        "--version"
+      ],
+      "provenance_paths": [
+        ".runtime/core"
+      ],
+      "output_glob": "**/*prediction_results.txt"
+    },
+    "phobius": {
+      "version": "1.01 (official 64-bit decoder)",
+      "min_length": 1,
+      "command": [
+        "{python}",
+        "{root}/scripts/phobius_local.py",
+        "{input}"
+      ],
+      "version_command": [
+        "{python}",
+        "{root}/scripts/phobius_local.py",
+        "--version"
+      ],
+      "provenance_paths": [
+        ".runtime/phobius/phobius"
+      ],
+      "stdout_file": "phobius_results.txt",
+      "output_glob": "phobius_results.txt"
+    },
+    "deeploc": {
+      "version": "2.1 Fast",
+      "min_length": 10,
+      "max_length": 1022,
+      "command": [
+        "{root}/.runtime/core/bin/deeploc2",
+        "--fasta",
+        "{input}",
+        "--output",
+        "{output}",
+        "--model",
+        "Fast"
+      ],
+      "version_command": [
+        "{root}/.runtime/core/bin/python",
+        "-c",
+        "import sys,importlib.metadata as m; print(sys.version); print(list((x,m.version(x)) for x in ('torch','DeepLoc2','fair-esm','transformers')))"
+      ],
+      "provenance_paths": [
+        ".runtime/core",
+        ".runtime/model-cache/torch"
+      ],
+      "output_glob": "**/results_*.csv"
+    },
+    "targetp": {
+      "version": "2.0",
+      "min_length": 10,
+      "command": [
+        "{root}/.runtime/targetp/TargetP-2.0/bin/targetp",
+        "-fasta",
+        "{input}",
+        "-org",
+        "{targetp_organism}",
+        "-format",
+        "short",
+        "-batch",
+        "32",
+        "-prefix",
+        "{output}/targetp"
+      ],
+      "env": {
+        "LD_LIBRARY_PATH": "{root}/.runtime/targetp/TargetP-2.0/lib",
+        "CUDA_VISIBLE_DEVICES": "-1",
+        "TF_NUM_INTRAOP_THREADS": "2",
+        "TF_NUM_INTEROP_THREADS": "1"
+      },
+      "provenance_paths": [
+        ".runtime/targetp/TargetP-2.0/bin/targetp",
+        ".runtime/targetp/TargetP-2.0/lib"
+      ],
+      "version_command": [
+        "{root}/.runtime/targetp/TargetP-2.0/bin/targetp",
+        "-version"
+      ],
+      "version_success_codes": [
+        0,
+        1
+      ],
+      "output_glob": "**/*summary.targetp2"
+    },
+    "predgpi": {
+      "version": "PredGPI 2008 (official repository, NumPy int compatibility)",
+      "min_length": 41,
+      "standard_only": true,
+      "command": [
+        "{python}",
+        "{root}/scripts/predgpi_compat.py",
+        "-f",
+        "{input}",
+        "-o",
+        "{output}/predgpi.json",
+        "-m",
+        "json"
+      ],
+      "env": {
+        "PREDGPI_HOME": "{root}/upstream/predgpi-master"
+      },
+      "watch_paths": [
+        "upstream/predgpi-master/predgpi.py",
+        "upstream/predgpi-master/GPIDAT",
+        "upstream/predgpi-master/predgpilib"
+      ],
+      "output_glob": "predgpi.json"
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "metaloc": {
+    "url": "https://github.com/scottc-bio/metaLoc",
+    "commit": "c10d8035603134a0c9916dcbcebdcf51d0559e95"
+  },
+  "predgpi": {
+    "url": "https://github.com/BolognaBiocomp/predgpi",
+    "commit": "35ac13788771aaf06b7174852476baea9321ae36",
+    "distribution": "official source archive",
+    "source_sha256": "60d29f9420b8040dec065cf21b51e72870eda9ed346b1e7f32b11d70852bd532"
+  },
+  "nextflow": {
+    "version": "25.10.2",
+    "sha256": "59c6f48fce6139157b2e8a28fdca8166bc502a22d9ef1a0a70065ecc9c3ae4a3"
+  },
+  "micromamba": {
+    "version": "2.10.0",
+    "sha256": "701f39c06f8e6a670a0e186c8479b9e5c0502a2f0cda6cef65d83bdd2875e8bd"
+  },
+  "targetp": {
+    "url": "https://media.githubusercontent.com/media/JJAlmagro/TargetP-2.0/master/targetp-2.0.Linux/targetp-2.0.Linux.tar.gz",
+    "sha256": "e3767a5b674233be6d19b7f8f67826c096ccdec16d607329a6eb758055142cfe",
+    "version": "2.0"
+  },
+  "phobius": {
+    "url": "https://phobius.sbc.su.se/download/phobius101_linux.tgz",
+    "sha256": "caf6256d04f8977578b8f0914ee4f4a5bf7bd82af1e67af3932c7762a6627f3e",
+    "version": "1.01",
+    "decoder": "bundled decodeanhmm.64bit; original 32-bit decoder retained"
+  },
+  "signalp": {
+    "version": "6.0 fast",
+    "source": "Locally supplied authorized package: signalp-6.0i.fast.tar.gz",
+    "bytes": 1526586576,
+    "sha256": "c099e8ab7732572d98940b8210926b9a0f6c3913cc12630cfe1c0698adb68f2c"
+  },
+  "deeploc": {
+    "version": "2.1 Fast",
+    "source": "Locally supplied authorized package: deeploc-2.1.All.tar.gz",
+    "bytes": 100817851,
+    "sha256": "c1cb684e91858c7dff76f81d829a16363257e5a023d23d0e7cc59ef843053e16"
+  },
+  "deeptmhmm": {
+    "version": "1.0 Academic",
+    "source": "Locally supplied authorized package: DeepTMHMM-Academic-License-v1.0.zip",
+    "bytes": 1719795628,
+    "sha256": "0a7a6c5d009e928c2e09bd0f225ad290166c6e67ebff5fb59145639484fcbd82"
+  },
+  "core_environment": {
+    "file": "tools/core-environment.yml",
+    "sha256": "6240c7484a07fc1d5dcde118d936a61123c527b1561f84f1a1ad748063456341",
+    "constraints_sha256": "1257bf67ab7df91f62d912758a34e55a0513a4c2999deeed974b5380603d29d0"
+  },
+  "deeplocpro": {
+    "url": "https://github.com/Jaimomar99/deeplocpro",
+    "commit": "32c0b37c7a31a0686ce022a697f48998fc2997b1",
+    "version": "1.0.0",
+    "license": "CC BY-NC-SA 4.0",
+    "assets": {
+      "deeplocpro-32c0b37.zip": {
+        "bytes": 24806660,
+        "sha256": "b1b8b80ade332e2f984b34501389edd68fd9660662bace51cb29a267c95e6ab3"
+      },
+      "esm2_t33_650M_UR50D.pt": {
+        "bytes": 2604537549,
+        "sha256": "ea9d0522b335a8778dea6535a65301f10208dece28cd5865482b0b1fc446168c"
+      },
+      "esm2_t33_650M_UR50D-contact-regression.pt": {
+        "bytes": 3687,
+        "sha256": "8ffe6edbd4173dc8d45c2cd5cb27d43aad77ec26b4c768200c58ae1f96693575"
+      }
+    }
+  },
+  "pts1_svm": {
+    "upstream": "https://github.com/oKoch/pts1-prediction-tool",
+    "commit": "0c1041905d12b96b72063aec5dccfd6073f31435",
+    "weights": "User-reproduced, not author-published",
+    "source": "Reproduced from the fixed upstream source and bundled training data",
+    "sha256": "e699cf76224d06adb7c259cc9640c011e2315b25b82efa005d0248d7fa252327",
+    "license": "BSD-3-Clause",
+    "runtime": "NumPy; no runtime training"
+  }
+}

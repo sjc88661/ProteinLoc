@@ -1,0 +1,80 @@
+{
+  "source_repo": "https://github.com/oKoch/pts1-prediction-tool",
+  "upstream_version": "1.0.2 (PyPI)",
+  "weights_published_upstream": false,
+  "how_obtained": "Retrained locally with the repo's own PTS1_Predictor (bundled FASTA + hard-coded SVC params)",
+  "estimator": "sklearn.svm.SVC",
+  "kernel": "rbf",
+  "C": 2.0,
+  "gamma": 0.092,
+  "c_terminal_length": 14,
+  "alphabet": [
+    "A",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "K",
+    "L",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "V",
+    "W",
+    "Y",
+    "X",
+    "U"
+  ],
+  "n_features": 308,
+  "n_training_samples": 11774,
+  "n_training_positives": 505,
+  "n_training_negatives": 11269,
+  "n_support_vectors": 1308,
+  "n_support_per_class": [
+    905,
+    403
+  ],
+  "classes": [
+    0,
+    1
+  ],
+  "training_data": {
+    "positives_fasta": "pts1_prediction_tool/datasets/pts1_filtered_peroxisomal_sequences.fasta",
+    "negatives_fasta": "pts1_prediction_tool/datasets/raw_non_peroxisomal_sequences.fasta"
+  },
+  "environment": {
+    "python": "3.9.6",
+    "sklearn": "1.6.1",
+    "numpy": "2.0.2",
+    "pandas": "2.3.3"
+  },
+  "upstream_test_sequences": {
+    "known_pts1_sequence_predicted": 1,
+    "known_non_pts1_sequence_predicted": 0,
+    "expected": [
+      1,
+      0
+    ],
+    "test_matches_upstream_tests": true
+  },
+  "files": {
+    "model_pts1_svm.joblib": "sklearn SVC, load with joblib (needs the same sklearn major version)",
+    "svm_weights.npz": "compact weights: 14 int8 residue codes per support vector + dual_coef + intercept + gamma",
+    "predict_pts1_numpy.py": "standalone numpy-only predictor using svm_weights.npz",
+    "verify_export.py": "cross-checks numpy-only weights vs the upstream sklearn model",
+    "validate_metrics.py": "5-fold CV reproduction of the README quality metrics"
+  },
+  "reported_metrics_upstream": {
+    "sensitivity": 0.86,
+    "specificity": 1.0,
+    "precision": 0.98
+  },
+  "cv_metrics_reproduced": "see cv_metrics.json"
+}

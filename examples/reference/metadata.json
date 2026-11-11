@@ -1,0 +1,151 @@
+[
+  {
+    "accession": "P00330",
+    "organism": {
+      "scientificName": "Saccharomyces cerevisiae (strain ATCC 204508 / S288c)",
+      "commonName": "Baker's yeast",
+      "taxonId": 559292,
+      "lineage": [
+        "Eukaryota",
+        "Fungi",
+        "Dikarya",
+        "Ascomycota",
+        "Saccharomycotina",
+        "Saccharomycetes",
+        "Saccharomycetales",
+        "Saccharomycetaceae",
+        "Saccharomyces"
+      ]
+    },
+    "length": 348,
+    "entry_audit": {
+      "firstPublicDate": "1986-07-21",
+      "lastAnnotationUpdateDate": "2026-11-04",
+      "lastSequenceUpdateDate": "2010-10-05",
+      "entryVersion": 240,
+      "sequenceVersion": 5
+    },
+    "location_comments": [
+      {
+        "commentType": "SUBCELLULAR LOCATION",
+        "subcellularLocations": [
+          {
+            "location": {
+              "evidences": [
+                {
+                  "evidenceCode": "ECO:0000269",
+                  "source": "PubMed",
+                  "id": "2937632"
+                }
+              ],
+              "value": "Cytoplasm",
+              "id": "SL-0086"
+            }
+          }
+        ]
+      }
+    ],
+    "source": "https://rest.uniprot.org/uniprotkb/P00330.json"
+  },
+  {
+    "accession": "P16474",
+    "organism": {
+      "scientificName": "Saccharomyces cerevisiae (strain ATCC 204508 / S288c)",
+      "commonName": "Baker's yeast",
+      "taxonId": 559292,
+      "lineage": [
+        "Eukaryota",
+        "Fungi",
+        "Dikarya",
+        "Ascomycota",
+        "Saccharomycotina",
+        "Saccharomycetes",
+        "Saccharomycetales",
+        "Saccharomycetaceae",
+        "Saccharomyces"
+      ]
+    },
+    "length": 682,
+    "entry_audit": {
+      "firstPublicDate": "1990-08-01",
+      "lastAnnotationUpdateDate": "2026-11-04",
+      "lastSequenceUpdateDate": "1990-08-01",
+      "entryVersion": 239,
+      "sequenceVersion": 1
+    },
+    "location_comments": [
+      {
+        "commentType": "SUBCELLULAR LOCATION",
+        "subcellularLocations": [
+          {
+            "location": {
+              "evidences": [
+                {
+                  "evidenceCode": "ECO:0000255",
+                  "source": "PROSITE-ProRule",
+                  "id": "PRU10138"
+                },
+                {
+                  "evidenceCode": "ECO:0000269",
+                  "source": "PubMed",
+                  "id": "2661018"
+                }
+              ],
+              "value": "Endoplasmic reticulum lumen",
+              "id": "SL-0096"
+            }
+          }
+        ]
+      }
+    ],
+    "source": "https://rest.uniprot.org/uniprotkb/P16474.json"
+  },
+  {
+    "accession": "P19882",
+    "organism": {
+      "scientificName": "Saccharomyces cerevisiae (strain ATCC 204508 / S288c)",
+      "commonName": "Baker's yeast",
+      "taxonId": 559292,
+      "lineage": [
+        "Eukaryota",
+        "Fungi",
+        "Dikarya",
+        "Ascomycota",
+        "Saccharomycotina",
+        "Saccharomycetes",
+        "Saccharomycetales",
+        "Saccharomycetaceae",
+        "Saccharomyces"
+      ]
+    },
+    "length": 572,
+    "entry_audit": {
+      "firstPublicDate": "1991-02-01",
+      "lastAnnotationUpdateDate": "2026-11-04",
+      "lastSequenceUpdateDate": "1991-02-01",
+      "entryVersion": 228,
+      "sequenceVersion": 1
+    },
+    "location_comments": [
+      {
+        "commentType": "SUBCELLULAR LOCATION",
+        "subcellularLocations": [
+          {
+            "location": {
+              "evidences": [
+                {
+                  "evidenceCode": "ECO:0000269",
+                  "source": "PubMed",
+                  "id": "11502169"
+                }
+              ],
+              "value": "Mitochondrion matrix",
+              "id": "SL-0170"
+            }
+          }
+        ]
+      }
+    ],
+    "source": "https://rest.uniprot.org/uniprotkb/P19882.json"
+  }
+]

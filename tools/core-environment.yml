@@ -1,0 +1,27 @@
+name: proteinloc-core
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - setuptools<81
+  - pytorch=1.13.1
+  - pytorch-cuda=11.7
+  - mkl=2023.2.0
+  - numpy=1.26.4
+  - matplotlib=3.7.3
+  - pandas=1.5.3
+  - scipy=1.11.4
+  - biopython=1.81
+  - perl
+  - pip:
+      - fair-esm==2.0.0
+      - transformers==4.30.2
+      - pytorch-lightning==1.9.5
+      - torchmetrics==0.11.4
+      - sentencepiece==0.1.99
+      - onnxruntime==1.16.3
+      - tqdm==4.66.6
+      - bio==1.6.2
